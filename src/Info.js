@@ -1,17 +1,31 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 
 class Info extends React.Component {
-    render() {
-        const title = "This is my title.";
-        const showTitle = true;
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
 
-        return (
-            <div>
-              <h1>{showTitle ? title : "No title"}</h1>
-              <p>Manage your stuff.</p>
-            </div>
-          );
-    }
+  render() {
+      const title = this.props.title;
+      const showTitle = true;
+
+      return (
+          <div>
+            <h1>{showTitle ? title : "No title"}</h1>
+            <p>Manage your stuff.</p>
+          </div>
+        );
+  }
 }
+
+Info.defaultProps = { 
+  title: "Default",
+};
+
+Info.propTypes = {
+  title: PropTypes.string,
+};
 
 export default  Info;
